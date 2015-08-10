@@ -1,0 +1,17 @@
+node_modules
+.grunt
+.DS_Store
+dep
+asset
+example-dist
+doc/api
+test/coverage
+SpecRunner.html
+*.orig
+undefined/
+example-dist
+*.log
+.idea/
+example/smarty/lib/*
+example/smarty/templates_c
+example/templates_c

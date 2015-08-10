@@ -1,0 +1,99 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'autoresponse' ]
+2 info using npm@2.11.2
+3 info using node@v0.10.22
+4 verbose install initial load of /Users/baidu/Desktop/image/package.json
+5 warn package.json image@0.0.1 license should be a valid SPDX license expression
+6 verbose readDependencies loading dependencies from /Users/baidu/Desktop/image/package.json
+7 silly cache add args [ 'autoresponse', null ]
+8 verbose cache add spec autoresponse
+9 silly cache add parsed spec { raw: 'autoresponse',
+9 silly cache add   scope: null,
+9 silly cache add   name: 'autoresponse',
+9 silly cache add   rawSpec: '',
+9 silly cache add   spec: '*',
+9 silly cache add   type: 'range' }
+10 silly addNamed autoresponse@*
+11 verbose addNamed "*" is a valid semver range for autoresponse
+12 silly addNameRange { name: 'autoresponse', range: '*', hasData: false }
+13 silly mapToRegistry name autoresponse
+14 silly mapToRegistry using default registry
+15 silly mapToRegistry registry http://npm.internal.baidu.com/
+16 silly mapToRegistry uri http://npm.internal.baidu.com/autoresponse
+17 verbose addNameRange registry:http://npm.internal.baidu.com/autoresponse not in flight; fetching
+18 verbose request uri http://npm.internal.baidu.com/autoresponse
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 14:37:39
+21 verbose request id 4f0da4da88c613de
+22 verbose etag "BF1NVTJSFXFBOIN665GYZEO9Q"
+23 http request GET http://npm.internal.baidu.com/autoresponse
+24 http 304 http://npm.internal.baidu.com/autoresponse
+25 silly get cb [ 304,
+25 silly get   { server: 'nginx/1.2.4',
+25 silly get     date: 'Thu, 06 Aug 2015 06:37:40 GMT',
+25 silly get     connection: 'close',
+25 silly get     etag: '"BF1NVTJSFXFBOIN665GYZEO9Q"',
+25 silly get     'set-cookie': [ 'BAIDUID=F0AA003220100973F0D9D52A75F3F2BD:FG=1; expires=Fri, 05-Aug-16 06:37:40 GMT; max-age=31536000; path=/; domain=.baidu.com; version=1' ],
+25 silly get     p3p: 'CP=" OTI DSP COR IVA OUR IND COM "',
+25 silly get     tracecode: '22602203370966417418080614' } ]
+26 verbose etag http://npm.internal.baidu.com/autoresponse from cache
+27 verbose get saving autoresponse to /Users/baidu/.npm/npm.internal.baidu.com/autoresponse/.cache.json
+28 silly addNameRange number 2 { name: 'autoresponse', range: '*', hasData: true }
+29 silly addNameRange versions [ 'autoresponse', [ '0.1.0', '0.1.1', '0.1.2' ] ]
+30 silly addNamed autoresponse@0.1.2
+31 verbose addNamed "0.1.2" is a plain semver version for autoresponse
+32 silly cache afterAdd autoresponse@0.1.2
+33 verbose afterAdd /Users/baidu/.npm/autoresponse/0.1.2/package/package.json not in flight; writing
+34 verbose afterAdd /Users/baidu/.npm/autoresponse/0.1.2/package/package.json written
+35 silly install resolved [ { name: 'autoresponse',
+35 silly install resolved     version: '0.1.2',
+35 silly install resolved     description: 'Autoresponse middleare using local data or proxy',
+35 silly install resolved     main: 'index.js',
+35 silly install resolved     scripts:
+35 silly install resolved      { pretest: 'jshint . > jshint.report',
+35 silly install resolved        test: 'jasmine-node test' },
+35 silly install resolved     repository:
+35 silly install resolved      { type: 'git',
+35 silly install resolved        url: 'git+https://github.com/wuhy/autoresponse.git' },
+35 silly install resolved     keywords: [ 'mock', 'autoresponse' ],
+35 silly install resolved     author: { name: 'sparklewhy@gmail.com' },
+35 silly install resolved     license: 'MIT',
+35 silly install resolved     bugs: { url: 'https://github.com/wuhy/autoresponse/issues' },
+35 silly install resolved     homepage: 'https://github.com/wuhy/autoresponse',
+35 silly install resolved     dependencies:
+35 silly install resolved      { formidable: '^1.0.14',
+35 silly install resolved        'http-proxy': '^1.1.4',
+35 silly install resolved        lodash: '^2.4.1',
+35 silly install resolved        log4js: '^0.6.14',
+35 silly install resolved        mime: '^1.2.11',
+35 silly install resolved        qs: '^0.6.6' },
+35 silly install resolved     devDependencies: { connect: '^2.19.6' },
+35 silly install resolved     readme: '\r\nautoresponse\r\n========\r\n\r\n自动响应请求中间件，可用于本地搭建的 node web server 请求 mock，支持本地 mock 和 代理。\r\n\r\n## Install\r\n\r\n```shell\r\nnpm install autoresponse\r\n```\r\n\r\n## Using with connect middleware\r\n\r\n```javascript\r\nvar autoresponse = require(\'autoresponse\')({ \r\n    watch: true,      // 配置文件变化，自动重新加载\r\n    logLevel: \'info\'  // 要打印的 log level\r\n});\r\napp.use(autoresponse);\r\napp.use(connect.static(\'./webroot\'));\r\n```\r\n\r\n自动响应配置，可以通过上述参数配置传入，建议通过 `autoresponse-config.js` 配置文件定义，关于配置说明请参考 `examples` 目录\r\n\r\n## Using with [edp webserver](https://github.com/ecomfe/edp-webserver)\r\n\r\n```javascript\r\nexports.getLocations = function () {\r\n    return [\r\n        { \r\n            location: \'/\', \r\n            handler: home( \'index.html\' )\r\n        },\r\n        {\r\n            location: /\\.html\\b.*$/,\r\n            handler: [\r\n                file()\r\n            ]\r\n        },\r\n        // ...\r\n        require(\'autoresponse\')(\'edp\', { watch: true, logLevel: \'info\' }),\r\n        { \r\n            location: /^.*$/, \r\n            handler: [\r\n                file(),\r\n                proxyNoneExists()\r\n            ]\r\n        }\r\n    ];\r\n};\r\n```\r\n\r\n## 一个简单配置文件说明\r\n\r\n在当前 webserver 根目录下创建 `autoreponse-config.js`  \r\n\r\n```javascript\r\nmodule.exports = {\r\n    // 要响应的数据跟目录\r\n    responseDir: \'./mock\',\r\n\r\n    /**\r\n     * 对 `get` 请求响应内容的配置\r\n     * 也支持 对 post 和 query 参数 进行自动响应，可以参见 examples\r\n     *\r\n     * @type {boolean|Array}\r\n     */\r\n    get: [\r\n        {\r\n            match: \'/b.html\',\r\n            mock: \'c.html\'\r\n        },\r\n        {\r\n            match: \'/account/getUserInfo\', // also support regex and function\r\n            mock: {\r\n                proxy: \'localhost:9090\'  // use proxy\r\n            }\r\n        },\r\n        {\r\n            // default mock file: <responseDir>/user/profile.js\r\n            // it\'will be processed as a node module by builtin js-processor\r\n            match: \'/user/profile\' \r\n        },\r\n        {\r\n            match: \'/data/list\',\r\n            mock: \'data/list.json\'\r\n        },\r\n        {\r\n            match: \'/php\',\r\n            mock: {\r\n                path: \'/data/test.php\' // rewrite request path\r\n            }\r\n        }\r\n    ] \r\n};\r\n```\r\n\r\n ',
+35 silly install resolved     readmeFilename: 'README.md',
+35 silly install resolved     _id: 'autoresponse@0.1.2',
+35 silly install resolved     _from: 'autoresponse@*' } ]
+36 info install autoresponse@0.1.2 into /Users/baidu/Desktop/image
+37 info installOne autoresponse@0.1.2
+38 verbose installOne of autoresponse to /Users/baidu/Desktop/image not in flight; installing
+39 warn locking Error: EACCES, open '/Users/baidu/.npm/_locks/autoresponse-89b8e6829116659f.lock'
+39 warn locking  /Users/baidu/.npm/_locks/autoresponse-89b8e6829116659f.lock failed { [Error: EACCES, open '/Users/baidu/.npm/_locks/autoresponse-89b8e6829116659f.lock']
+39 warn locking   errno: 3,
+39 warn locking   code: 'EACCES',
+39 warn locking   path: '/Users/baidu/.npm/_locks/autoresponse-89b8e6829116659f.lock' }
+40 verbose stack Error: Attempt to unlock /Users/baidu/Desktop/image/node_modules/autoresponse, which hasn't been locked
+40 verbose stack     at unlock (/usr/local/lib/node_modules/npm/lib/utils/locker.js:66:11)
+40 verbose stack     at cb (/usr/local/lib/node_modules/npm/lib/install.js:1017:5)
+40 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:1021:20
+40 verbose stack     at /usr/local/lib/node_modules/npm/lib/utils/locker.js:40:9
+40 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:149:38)
+40 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:177:38
+40 verbose stack     at Object.oncomplete (fs.js:107:15)
+41 verbose cwd /Users/baidu/Desktop/image
+42 error Darwin 13.2.0
+43 error argv "node" "/usr/local/bin/npm" "install" "autoresponse"
+44 error node v0.10.22
+45 error npm  v2.11.2
+46 error Attempt to unlock /Users/baidu/Desktop/image/node_modules/autoresponse, which hasn't been locked
+47 error If you need help, you may report this error at:
+47 error     <https://github.com/npm/npm/issues>
+48 verbose exit [ 1, true ]

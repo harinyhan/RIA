@@ -1,0 +1,47 @@
+@import '../dep/est/src/all.less';
+@import '../dep/moye/ng/src/css/RangeSlider.less';
+
+.main {
+    width: 1260px;
+    margin: 0 auto;
+}
+
+.effects-wrap {
+    float: left;
+    width: 200px;
+    margin-right: 30px;
+    padding-left: 0;
+    line-height: 30px;
+    list-style: none;
+
+    .download,
+    .effects-item {
+        height: 30px;
+        margin: 10px 0;
+        border: 1px solid #ededed;
+        text-align: center;
+        background-color: #f1f1f1;
+        cursor: pointer;
+        &:hover {
+            background-color: #F8F7F7;
+        }
+    }
+}
+
+.canvas-wrap {
+    float: left;
+    width: 700px;
+}
+
+.control-wrap {
+    float: right;
+    width: 300px;
+    .range-item {
+        margin: 50px 0;
+
+        div {
+            width: 300px;
+            margin-top: 10px;
+        }
+    }
+}

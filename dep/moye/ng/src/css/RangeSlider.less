@@ -1,0 +1,136 @@
+/**
+ * @file 范围选择输入控件样式定义
+ * @author wuhuiyao@baidu.com
+ */
+
+@import './dep.less';
+@import './variable.less';
+
+@moye-rangeslider-height: 8px;
+@moye-rangeslider-bgcolor: #ebebeb;
+@moye-rangeslider-select-bgcolor: #37c87d;
+@moye-rangeslider-cursor-height: 18px;
+@moye-rangeslider-cursor-label-height: 20px;
+@moye-rangeslider-cursor-label-color: #fff;
+@moye-rangeslider-cursor-label-fontsize: 12px;
+@moye-rangeslider-scale-value-color: #6d6d6d;
+@moye-rangeslider-scale-value-fontsize: 12px;
+@moye-rangeslider-scale-stick-color: #bfbfbf;
+@moye-rangeslider-scale-stick-value-gap: 8px;
+
+.@{moye-prefix}-rangeslider {
+    @border-radius: @moye-rangeslider-height / 2;
+
+    position: relative;
+    height: @moye-rangeslider-height;
+    background: @moye-rangeslider-bgcolor;
+    border-radius: @border-radius;
+
+    &-bar {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        height: @moye-rangeslider-height;
+        overflow: hidden;
+        background: @moye-rangeslider-select-bgcolor;
+        border-radius: @border-radius;
+    }
+
+    &-cursor {
+        @ie-height: @moye-rangeslider-cursor-height - @border-width * 2;
+        @border-width: 3px;
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        margin-top: -1 * @moye-rangeslider-cursor-height / 2;
+        margin-left: -1 * @moye-rangeslider-cursor-height / 2;
+        height: @moye-rangeslider-cursor-height;
+        *height: @ie-height;
+        width: @moye-rangeslider-cursor-height;
+        *width: @ie-height;
+        overflow: hidden;
+        border-radius: 100%;
+        box-sizing: border-box;
+        border: @border-width solid @moye-rangeslider-select-bgcolor;
+        background: #fff;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -1 * @border-radius;
+            margin-top: -1 * @border-radius;
+            height: @moye-rangeslider-height;
+            width: @moye-rangeslider-height;
+            border-radius: 100%;
+            background: @moye-rangeslider-select-bgcolor;
+        }
+    }
+
+    &-cursor-focus {
+        box-shadow: 1px 1px 3px @moye-rangeslider-select-bgcolor;
+    }
+
+    &-cursor-label {
+        @arrow-size: 4px;
+        position: absolute;
+        bottom: 100%;
+        margin-bottom: (@moye-rangeslider-cursor-height - @moye-rangeslider-height) / 2 + @arrow-size + 2px;
+        height: @moye-rangeslider-cursor-label-height;
+        line-height: @moye-rangeslider-cursor-label-height;
+        padding: 0 3px;
+        color: @moye-rangeslider-cursor-label-color;
+        background: @moye-rangeslider-select-bgcolor;
+        border-radius: 2px;
+        font-size: @moye-rangeslider-cursor-label-fontsize;
+        white-space: nowrap;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -1 * @arrow-size;
+            height: 0;
+            width: 0;
+            border: @arrow-size solid transparent;
+            border-top-color: @moye-rangeslider-select-bgcolor;
+        }
+    }
+
+    &-scale {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+    }
+
+    &-scale-stick {
+        position: absolute;
+        top: 0;
+        margin-top: -1 * @moye-rangeslider-height;
+        margin-left: -1 * @moye-rangeslider-height / 2;
+        height: @moye-rangeslider-height;
+        width: @moye-rangeslider-height;
+        overflow: hidden;
+        border-radius: 100%;
+        background: @moye-rangeslider-scale-stick-color;
+
+        &.first {
+            margin-left: 0;
+        }
+
+        &.last {
+            margin-left: -1 * @moye-rangeslider-height;
+        }
+    }
+
+    &-scale-value {
+        position: absolute;
+        margin-top: @moye-rangeslider-scale-stick-value-gap;
+        color: @moye-rangeslider-scale-value-color;
+        font-size: @moye-rangeslider-scale-value-fontsize;
+        white-space: nowrap;
+    }
+
+}
